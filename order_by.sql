@@ -15,3 +15,9 @@ ORDER BY fecha DESC;
 SELECT *
 FROM tabla_diaria
 ORDER BY fecha ASC;
+
+-- Podemos agregar indices para busquedas y ordenamientos
+-- mas eficientes. Sirven para alto transito de consultas
+
+-- La contraparte del indice es que hace lenta la incorporación
+-- de nuevos datos.
