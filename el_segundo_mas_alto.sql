@@ -43,3 +43,21 @@ ON datos_alumnos.colegiatura = segunda_mayor_colegiatura.colegiatura;
 
 -- Desafio: Traer solamente la segunda mitad de la tabla
 
+SELECT *
+FROM ( 
+	SELECT ROW_NUMBER() OVER() AS row_id, * 
+	FROM platzi.alumnos) AS number_table
+WHERE number_table.row_id > (
+	SELECT COUNT(id)/2 AS media_tabla
+	FROM platzi.alumnos
+	)
+ORDER BY row_id ASC;
+
+-- Otra solución:
+
+SELECT ROW_NUMBER() OVER() AS row_id, *
+FROM platzi.alumnos
+OFFSET(
+	SELECT COUNT(*)/2
+	FROM platzi.alumnos);
+
